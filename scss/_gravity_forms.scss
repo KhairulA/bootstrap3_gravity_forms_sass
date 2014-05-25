@@ -14,6 +14,7 @@
 //	- Lists
 //	- General Datepicker
 //	- Folkhack's jQuery UI Datepicker: (DEPRECIATED!)
+//  - Validation container
 //
 //
 //	Based on:
@@ -152,14 +153,14 @@ $fh_gf_responsive_break_at: $screen-sm-min !default;
 
 	// Full-width container
 	.ginput_full { width: 100%; }
-	
+
 	// Left/right containers (ex: first/last name)
 	.ginput_left,
 	.ginput_right {
 		float: left;
 		width: 50%;
 	}
-	
+
 	// Inputs and labels
 	.ginput_full {
 		input,
@@ -175,7 +176,7 @@ $fh_gf_responsive_break_at: $screen-sm-min !default;
 			width: 95% !important;
 		}
 	}
-	
+
 	// Responsive break for full-width input fields
 	@media screen and ( max-width: $fh_gf_responsive_break_at ) {
 		.ginput_full,
@@ -200,7 +201,7 @@ $fh_gf_responsive_break_at: $screen-sm-min !default;
 
 	display: table;
 
-	// Add BS3 clearfix	
+	// Add BS3 clearfix
 	@extend .clearfix;
 
 	// Time/date fields
@@ -365,4 +366,12 @@ $fh_gf_responsive_break_at: $screen-sm-min !default;
 	// Hide jQuery UI datepicker
 	.ui-datepicker,
 	.ui-datepicker-trigger { display: none !important; }
+}
+
+
+// Honeypot validation container
+// - hides .gform_validation_container
+
+.gform_validation_container {
+  display: none;
 }
