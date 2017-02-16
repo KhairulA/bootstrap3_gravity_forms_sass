@@ -72,6 +72,9 @@ $fh_gf_responsive_break_at: $screen-sm-min !default;
 .ginput_container select[multiple] { height: auto; }
 .ginput_container textarea { height: auto; }
 
+.gfield_description {
+    @extend .help-block;
+}
 
 //
 //  Required *:
@@ -272,40 +275,38 @@ $fh_gf_responsive_break_at: $screen-sm-min !default;
 //  - left this around just-in-case
 //
 @if( $fh_gf_jqueryui_datepicker_enabled ) {
-
-    // Local defaults from "Folkhack's Boilerplate"
-    //  * Allows for stand-alone use
-    //  * TODO: nix this ... I think I'm totally done f'n with jQuery UI
-    $k_black:      #000000 !default;
-    $k_white:      #FFFFFF !default;
-    $k_mineshaft:  #303030 !default;
-    $k_silver:     #CCCCCC !default;
-    $k_whitesmoke: #F5F5F5 !default;
-
     .ui-datepicker-trigger {
         display: inline-block;
         margin-left: 5px;
     }
     .ui-widget {
-        background: $k_mineshaft;
-        box-shadow: 1px 4px 9px $k_silver;
+        background: $dropdown-bg;
+        border: 1px solid $dropdown-border;
+        @include box-shadow(0 6px 12px rgba(0,0,0,.175));
     }
     .ui-datepicker {
-        font-family: Verdana, sans-serif;
-        font-size: 90% !important;
+        font-family: $font-family-sans-serif;
+        font-size: $font-size-small;
         padding: 0;
+
         a:hover { text-decoration: none; }
         .ui-datepicker-header {
-            background: transparent;
+            background: $gray-lighter;
             border: none;
             font-weight: normal;
-            padding: 3px;
-            a {
-                color: $k_white;
-                text-transform: uppercase;
-            }
+            padding: $padding-base-vertical $padding-base-horizontal;
+            min-width: 250px;
         }
-        .ui-datepicker-header .ui-datepicker-title { text-align: center; }
+        .ui-datepicker-header .ui-datepicker-title {
+            text-align: center;
+        }
+        .ui-datepicker-month,
+        .ui-datepicker-year {
+            @extend .form-control;
+            @extend .input-sm;
+            max-width: 60px;
+            display: inline-block;
+        }
         .ui-datepicker-month {
             margin-right: 5px;
         }
@@ -319,30 +320,27 @@ $fh_gf_responsive_break_at: $screen-sm-min !default;
         }
         .ui-datepicker-next,
         .ui-datepicker-prev {
+            @extend .btn;
+            @extend .btn-sm;
+            @extend .btn-default;
             cursor: pointer;
-            top: 3px;
-            span {
-                font-size: 10px;
-                font-weight: normal;
-                margin-top: 0;
-                position: relative;
-                top: 0;
-            }
         }
-        table { margin: 0; }
+        table.ui-datepicker-calendar {
+            margin: 0;
+            width: 100%;
+        }
         th {
-            border-top: 1px solid $k_silver;
-            border: none;
-            color: $k_silver;
+            background-color: $gray-lighter;
+            color: $gray;
             font-size: 13px;
             font-weight: normal;
             padding: 3px 0;
             text-align: center;
         }
         td {
-            background: $k_whitesmoke;
+            background: $dropdown-bg;
             border: none;
-            color: $k_mineshaft;
+            color: $gray-light;
             padding: 0;
             text-align: center;
         }
@@ -356,7 +354,8 @@ $fh_gf_responsive_break_at: $screen-sm-min !default;
         }
         td .ui-state-active,
         td .ui-state-hover {
-            background: $k_white;
+            background: $link-color;
+            color: #fff;
         }
         .ui-state-disabled  { opacity: 1; }
     }
