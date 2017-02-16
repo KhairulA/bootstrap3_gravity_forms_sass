@@ -72,6 +72,10 @@ $fh_gf_responsive_break_at: $screen-sm-min !default;
 .ginput_container select[multiple] { height: auto; }
 .ginput_container textarea { height: auto; }
 
+// Input helpers
+.gfield_description {
+    @extend .help-block;
+}
 
 //
 //	Required *:
